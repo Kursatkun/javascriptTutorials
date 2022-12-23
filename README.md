@@ -1,0 +1,2 @@
+# javascriptTutorials
+ for education purphoses
