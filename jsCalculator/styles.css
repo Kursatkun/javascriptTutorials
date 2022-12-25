@@ -20,6 +20,13 @@ body {
     padding: 4px;
 }
 
+.previousResultScreen {
+    background-color: rgb(157, 196, 157);
+    width: 224px;
+    font-size: 20px;
+    padding: 4px;
+}
+
 .buttons {
     width: 232px;
     display: flex;

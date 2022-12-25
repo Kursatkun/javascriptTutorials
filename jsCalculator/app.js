@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll('button')
 const screenDisplay = document.querySelector('.screen')
+const previousResultScreen = document.querySelector('.previousResultScreen')
 
 let calculation = []
 let calcualtionString = ""
@@ -43,16 +44,18 @@ function addToScreen (value){
         calculationQueue.push(temp)
         calculationQueue.push(value)
         accumulativeCalculation = calculationQueue.join('')
-        screenDisplay.textContent = accumulativeCalculation
+        previousResultScreen.textContent = accumulativeCalculation
         console.log("here1")
         console.log(calculation)
         console.log(calculationQueue)
     } else if ((operatorButtons.includes(value)) && calculationQueue.length <2) {
         calculationQueue.push(calculation.join(''))
         calculationQueue.push(value)
-        emptyArray(calculation)
+        calculation.push(value)
         accumulativeCalculation = calculationQueue.join('')
-        screenDisplay.textContent = accumulativeCalculation
+        previousResultScreen.textContent = accumulativeCalculation
+        screenDisplay.textContent = calculation.join('')
+        emptyArray(calculation)
         console.log("here2")
         console.log(calculationQueue)
     } else {
@@ -68,7 +71,8 @@ function addToScreen (value){
 function action(button) {
     const value = button.textContent
     if (value === "CLEAR") {
-        calculation = []
+        emptyArray(calculationQueue)
+        emptyArray(calculation)
         screenDisplay.textContent = '0'
     } else if (value === "=") {
         screenDisplay.textContent = calculate()
